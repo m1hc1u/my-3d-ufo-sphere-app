@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interaktywna sfera kosmity</title>
+    <!-- Ładujemy styl -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Kontener na scenę Three.js -->
+    <div id="container"></div>
+
+    <!-- Modal wyświetlający pełnoekranowy obrazek (okrągły jak zdjęcie profilowe) -->
+    <div id="modal" class="hidden">
+      <div id="modal-content">
+        <span id="modal-close">X</span>
+        <img id="modal-image" src="" alt="Obraz w pełnej rozdzielczości" />
+      </div>
+    </div>
+
+    <!-- Dołączamy główny skrypt napisany w TypeScript -->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

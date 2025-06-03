@@ -1,0 +1,62 @@
+/* Reset marginesów i paddingów dla pełnoekranowego widoku */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* Kontener na scenę Three.js */
+#container {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Stylowanie modalu – ciemne tło z efektem fade-in */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 100;
+}
+
+/* Klasa aktywna wyświetlająca modal */
+#modal.show {
+  opacity: 1;
+}
+
+/* Treść modalu – obrazek w formie okręgu (podobnie jak zdjęcie profilowe) */
+#modal-content {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  background: #fff;
+}
+
+/* Stylowanie obrazka – dopasowany by pokryć cały obszar */
+#modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Przycisk zamknięcia, umieszczony w prawym górnym rogu */
+#modal-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 101;
+}
