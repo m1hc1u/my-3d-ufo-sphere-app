@@ -229,9 +229,9 @@ function onMouseUp(event: MouseEvent) {
 function showModal(material: THREE.Material | THREE.Material[]) {
   let texture: THREE.Texture | undefined;
   if (Array.isArray(material)) {
-    texture = material[0].map;
+    texture = (material[0] as THREE.MeshBasicMaterial).map ?? undefined;
   } else {
-    texture = (material as THREE.MeshBasicMaterial).map;
+    texture = (material as THREE.MeshBasicMaterial).map ?? undefined;
   }
   if (texture && texture.image && texture.image.src) {
     modalImage.src = texture.image.src;
