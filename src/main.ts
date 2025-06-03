@@ -134,7 +134,6 @@ const mouse = new Vector2();
 // Pobieramy elementy modalu (pełnoekranowego wyświetlania obrazka).
 const modal = document.getElementById('modal')!;
 const modalImage = document.getElementById('modal-image') as HTMLImageElement;
-const modalClose = document.getElementById('modal-close')!;
 
 /**
  * Aktualizuje pozycje kamery, promień sfery i rozmieszcza obrazki
