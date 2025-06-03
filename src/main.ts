@@ -121,8 +121,8 @@ imageFiles.forEach((file) => {
 
 // --- INTERAKCJE I OBSŁUGA MYSZY ---
 
-// Flaga automatycznej rotacji – teraz domyślnie wyłączona.
-let autoRotate = false;
+// Flaga automatycznej rotacji – domyślnie włączona.
+let autoRotate = true;
 // Flaga informująca, czy użytkownik przeciąga sferę.
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
@@ -193,12 +193,8 @@ function onMouseMove(event: MouseEvent) {
       sphereGroup.rotation.x += deltaMove.y * 0.005;
       previousMousePosition = { x: event.clientX, y: event.clientY };
     }
-  } else {
-    // Gdy nie przeciągamy, sprawdzamy czy kursor znajduje się nad sferą (lub obrazkami).
-    const intersects = getIntersects(event);
-    // Jeśli mamy przecięcie, włączamy automatyczny obrót.
-    autoRotate = intersects.length > 0;
   }
+  // Usuwamy warunek else z autoRotate, bo obrót ma być zawsze włączony poza przeciąganiem/modalem
 }
 
 /**
@@ -218,6 +214,7 @@ function onMouseUp(event: MouseEvent) {
     }
   }
   isDragging = false;
+  autoRotate = true; // Po zakończeniu przeciągania wznawiamy obrót (jeśli modal nie jest otwarty)
 }
 
 /**
@@ -245,6 +242,7 @@ function showModal(material: THREE.Material | THREE.Material[]) {
  */
 modalClose.addEventListener('click', () => {
   modal.classList.remove('show');
+  autoRotate = true; // Wznawiamy obrót po zamknięciu modalu
 });
 
 /**
@@ -253,7 +251,7 @@ modalClose.addEventListener('click', () => {
 function animate() {
   requestAnimationFrame(animate);
   if (autoRotate) {
-    sphereGroup.rotation.y += 0.002;
+    sphereGroup.rotation.y += 0.001; // Bardzo powolny, przyjemny obrót
   }
   renderer.render(scene, camera);
 }
