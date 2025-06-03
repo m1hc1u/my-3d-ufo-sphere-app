@@ -60,3 +60,10 @@ body, html {
   cursor: pointer;
   z-index: 101;
 }
+
+/* ...existing code... */
+#modal.hidden {
+  display: none;
+  opacity: 0;
+}
+/* ...existing code... */
