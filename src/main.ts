@@ -72,10 +72,10 @@ const imageMeshes: THREE.Mesh[] = [];
  * @returns Mesh z obrazkiem.
  */
 function createImagePlane(texture: THREE.Texture): THREE.Mesh {
-  // Ustal rozmiar płaszczyzny proporcjonalnej do promienia sfery.
   const planeSize = sphereRadius * 0.5;
   const geometry = new THREE.PlaneGeometry(planeSize, planeSize);
-  const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+  // Ustawiamy side na FrontSide, aby obrazek był widoczny tylko z zewnątrz sfery
+  const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.FrontSide });
   return new THREE.Mesh(geometry, material);
 }
 
