@@ -6,7 +6,7 @@ const container = document.getElementById('container')!;
 
 // Ustawiamy scenę.
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000000); // Tło – czarne
+scene.background = new THREE.Color(0x00000); // Tło – czarne
 
 // Obliczamy promień sfery w zależności od rozmiaru okna.
 // Im mniejszy ekran, tym mniejsza sfera.
@@ -50,16 +50,16 @@ sphereGroup.add(sphereMesh);
 // Nazwy plików zgodne z "kosmita1.png", "kosmita2.png", itd.
 const textureLoader = new THREE.TextureLoader();
 const imageFiles = [
-  '/src/images/kosmita1.png',
-  '/src/images/kosmita2.png',
-  '/src/images/kosmita3.png',
-  '/src/images/kosmita4.png',
-  '/src/images/kosmita5.png',
-  '/src/images/kosmita6.png',
-  '/src/images/kosmita7.png',
-  '/src/images/kosmita8.png',
-  '/src/images/kosmita9.png',
-  '/src/images/kosmita10.png',
+  '/images/kosmita1.png',
+  '/images/kosmita2.png',
+  '/images/kosmita3.png',
+  '/images/kosmita4.png',
+  '/images/kosmita5.png',
+  '/images/kosmita6.png',
+  '/images/kosmita7.png',
+  '/images/kosmita8.png',
+  '/images/kosmita9.png',
+  '/images/kosmita10.png',
 ];
 
 // Tablica na meshe obrazków.
@@ -233,6 +233,7 @@ function showModal(material: THREE.Material | THREE.Material[]) {
   if (texture && texture.image && texture.image.src) {
     modalImage.src = texture.image.src;
   }
+  modal.classList.remove('hidden');
   modal.classList.add('show');
   autoRotate = false; // Zatrzymujemy obrót, gdy modal jest aktywny.
 }
@@ -240,9 +241,12 @@ function showModal(material: THREE.Material | THREE.Material[]) {
 /**
  * Obsługa przycisku zamknięcia modalu.
  */
-modalClose.addEventListener('click', () => {
-  modal.classList.remove('show');
-  autoRotate = true; // Wznawiamy obrót po zamknięciu modalu
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.classList.remove('show');
+    modal.classList.add('hidden');
+    autoRotate = true;
+  }
 });
 
 /**
